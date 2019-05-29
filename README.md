@@ -1,0 +1,2 @@
+Goal: build a working GraphQL endpoint with queries and mutations which serves as an entry point to an SQL database
+Reasoning: to learn more about SQL, GraphQL and Node.js and how they interact with one another
