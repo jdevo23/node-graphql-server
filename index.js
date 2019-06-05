@@ -10,12 +10,19 @@ const connection = mysql.createConnection({
   port: '3306'
 })
 
-connection.connect(function(err) {
+connection.connect((err) => {
   if (err) {
     console.error('error connecting: ' + err.stack);
     return;
   }
- 
+
+  // add table
+  // const createTable = "CREATE TABLE motorcycles (make VARCHAR(255), model VARCHAR(255))"
+  // connection.query(createTable, (err, res) => {
+  //   if (err) throw err;
+  //   console.log('Table created!')
+  // })
+
   console.log('connected as id ' + connection.threadId);
 });
 
