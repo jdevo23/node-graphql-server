@@ -22,13 +22,25 @@ connection.connect((err) => {
   //   if (err) throw err;
   //   console.log('Table created!')
   // })
+  
+  // add row
+  // const createRow = "INSERT INTO motorcycles(make, model) VALUES('Yamaha', 'R1')"
+  // connection.query(createRow, (err, res) => {
+  //   if (err) {
+  //     console.log(err);
+  //   } else {
+  //     console.log('Row created:', res)
+  //   }
+  // })
 
   console.log('connected as id ' + connection.threadId);
 });
 
+// connection.end();
+
 const app = express()
 const PORT = 5000
 
-app.get('/', (req, res) => {
-  res.send('hello world')
-})
+// app.get('/', (req, res) => {
+//   res.send('hello world')
+// })
