@@ -33,6 +33,15 @@ connection.connect((err) => {
   //   }
   // })
 
+  // simple query
+  // const query = `SELECT * FROM motorcycles`;
+  // connection.query(query, (err, res, fields) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   }
+  //   console.log(res)
+  // })
+
   console.log('connected as id ' + connection.threadId);
 });
 
