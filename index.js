@@ -34,12 +34,27 @@ connection.connect((err) => {
   // })
 
   // simple query
-  // const query = `SELECT * FROM motorcycles`;
-  // connection.query(query, (err, res, fields) => {
+  const query = `SELECT * FROM motorcycles`;
+  connection.query(query, (err, res, fields) => {
+    if (err) {
+      return console.error(err.message);
+    }
+    console.log(res)
+  })
+
+  // update statement
+  // const query = `UPDATE motorcycles 
+  //   SET make = ?
+  //   WHERE model = ?`
+
+  // const data = ['ducati', 'R1']
+
+  // connection.query(query, data, (err, res, fields) => {
   //   if (err) {
   //     return console.error(err.message);
   //   }
-  //   console.log(res)
+
+  //   console.log('Rows affected:', res.affectedRows);
   // })
 
   console.log('connected as id ' + connection.threadId);
