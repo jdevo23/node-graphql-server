@@ -16,46 +16,20 @@ connection.connect((err) => {
     return;
   }
 
-  // add table
-  // const createTable = "CREATE TABLE motorcycles (make VARCHAR(255), model VARCHAR(255))"
-  // connection.query(createTable, (err, res) => {
-  //   if (err) throw err;
-  //   console.log('Table created!')
-  // })
+  const createTable = "CREATE TABLE motorcycles (? VARCHAR(255), ? VARCHAR(255))"
+  const createRow = "INSERT INTO motorcycles(make, model) VALUES(?, ?)"
+  const selectAll = `SELECT * FROM motorcycles`;
+  const update = `UPDATE motorcycles 
+    SET make = ?
+    WHERE model = ?`
+  const query = `DELETE FROM motorcycles where model = ?`
   
-  // add row
-  // const createRow = "INSERT INTO motorcycles(make, model) VALUES('Yamaha', 'R1')"
-  // connection.query(createRow, (err, res) => {
-  //   if (err) {
-  //     console.log(err);
-  //   } else {
-  //     console.log('Row created:', res)
-  //   }
-  // })
-
-  // simple query
-  const query = `SELECT * FROM motorcycles`;
-  connection.query(query, (err, res, fields) => {
+  connection.query(value, data, (err, res, fields) => {
     if (err) {
       return console.error(err.message);
     }
     console.log(res)
   })
-
-  // update statement
-  // const query = `UPDATE motorcycles 
-  //   SET make = ?
-  //   WHERE model = ?`
-
-  // const data = ['ducati', 'R1']
-
-  // connection.query(query, data, (err, res, fields) => {
-  //   if (err) {
-  //     return console.error(err.message);
-  //   }
-
-  //   console.log('Rows affected:', res.affectedRows);
-  // })
 
   console.log('connected as id ' + connection.threadId);
 });
