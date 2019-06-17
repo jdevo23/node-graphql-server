@@ -18,13 +18,14 @@ connection.connect((err) => {
 
   const createTable = "CREATE TABLE motorcycles (? VARCHAR(255), ? VARCHAR(255))"
   const createRow = "INSERT INTO motorcycles(make, model) VALUES(?, ?)"
-  const selectAll = `SELECT * FROM motorcycles`;
+  const createMultipleRows = "INSERT INTO motorcycles(make, model) VALUES ?"
+  const selectAll = "SELECT * FROM motorcycles"
   const update = `UPDATE motorcycles 
     SET make = ?
     WHERE model = ?`
   const query = `DELETE FROM motorcycles where model = ?`
   
-  connection.query(value, data, (err, res, fields) => {
+  connection.query(selectAll, (err, res, fields) => {
     if (err) {
       return console.error(err.message);
     }
