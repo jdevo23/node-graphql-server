@@ -25,12 +25,12 @@ connection.connect((err) => {
     WHERE model = ?`
   const query = `DELETE FROM motorcycles where model = ?`
   
-  connection.query(selectAll, (err, res, fields) => {
-    if (err) {
-      return console.error(err.message);
-    }
-    console.log(res)
-  })
+  // connection.query(selectAll, (err, res, fields) => {
+  //   if (err) {
+  //     return console.error(err.message);
+  //   }
+  //   console.log(res)
+  // })
 
   console.log('connected as id ' + connection.threadId);
 });
