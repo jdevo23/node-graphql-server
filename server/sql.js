@@ -1,6 +1,9 @@
 const express = require('express')
+const { ApolloServer, gql } = require('apollo-server-express');
 const mysql = require('mysql')
 const keys = require('./keys')
+const typeDefs = require('./schema')
+const resolvers = require('./resolvers')
 
 const connection = mysql.createConnection({
   host: keys.host,
