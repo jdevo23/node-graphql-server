@@ -20,7 +20,15 @@ const defs = gql`
 
 const typeDefs = gql`
   type Query {
+    motorcycles: [Motorcycle]!
+    motorcycle(id: ID!): Motorcycle
     me: User
+  }
+
+  type Motorcycle {
+    id: ID!
+    make: String
+    model: String
   }
 
   type User {

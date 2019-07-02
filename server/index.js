@@ -1,18 +1,20 @@
-const express = require('express');
-const mysql = require('mysql');
-const keys = require('./keys');
+const express = require("express");
+const mysql = require("mysql");
+const keys = require("./keys");
+
 const app = express();
 
-const { ApolloServer } = require('apollo-server-express');
-const typeDefs = require('./src/schema');
-const resolvers = require('./src/resolvers');
+const { ApolloServer } = require("apollo-server-express");
+const typeDefs = require("./src/schema");
+const resolvers = require("./src/resolvers");
+const models = require('./models/user')
 
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, context: models });
 
-server.applyMiddleware({ app, path: '/graphql' });
+server.applyMiddleware({ app, path: "/graphql" });
 
 app.listen({ port: 8000 }, () => {
-  console.log('Apollo server on http://localhost:8000/graphql');
+  console.log("Apollo server on http://localhost:8000/graphql");
 });
 
 const connection = mysql.createConnection({
@@ -20,7 +22,7 @@ const connection = mysql.createConnection({
   user: keys.user,
   password: keys.password,
   database: keys.database,
-  port: '3306'
+  port: "3306"
 });
 
 // connection.connect((err) => {

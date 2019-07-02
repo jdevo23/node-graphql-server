@@ -4,8 +4,8 @@ const resolvers = {
       return {
         username: 'jdevo23'
       }
-    }
-  }
+    },
+  },
 }
 
 module.exports = resolvers
