@@ -1,11 +1,7 @@
-const resolvers = {
+const resolver = {
   Query: {
-    me: () => {
-      return {
-        username: 'jdevo23'
-      }
-    },
-  },
-}
+    motorcycles: (parent, args, { db }, info) => db.motorcycle.findAll()
+  }
+};
 
-module.exports = resolvers
+module.exports = resolver;

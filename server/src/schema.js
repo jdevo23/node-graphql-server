@@ -1,28 +1,9 @@
-const { gql } = require('apollo-server')
-const defs = gql`
-  type Query {
-    motorcycles: [Motorcycle]!
-    motorcycle(id: ID!): Motorcycle
-    me: User
-  }
-
-  type Motorcycle {
-    id: ID!
-    make: String
-    model: String
-  }
-
-  type User {
-    id: ID!
-    email: String!
-  }
-`
+const { gql } = require("apollo-server");
 
 const typeDefs = gql`
   type Query {
     motorcycles: [Motorcycle]!
     motorcycle(id: ID!): Motorcycle
-    me: User
   }
 
   type Motorcycle {
@@ -30,10 +11,6 @@ const typeDefs = gql`
     make: String
     model: String
   }
+`;
 
-  type User {
-    username: String!
-  }
-`
-
-module.exports = typeDefs
+module.exports = typeDefs;

@@ -1,35 +1,39 @@
 const express = require("express");
-const mysql = require("mysql");
+const Sequelize = require("sequelize");
+
+const typeDefs = require("./src/schema");
+const resolver = require("./src/resolvers");
+const Motorcycle = require("./src/models/motorcycle");
 const keys = require("./keys");
+
+const { ApolloServer } = require("apollo-server-express");
 
 const app = express();
 
-const { ApolloServer } = require("apollo-server-express");
-const typeDefs = require("./src/schema");
-const resolvers = require("./src/resolvers");
-const models = require('./models/user')
+const sequelize = new Sequelize({
+  host: keys.host,
+  dialect: "mysql",
+  username: keys.user,
+  password: keys.password,
+  database: keys.database,
+  define: {
+    timestamps: false
+  }
+});
 
-const server = new ApolloServer({ typeDefs, resolvers, context: models });
+Motorcycle(sequelize, Sequelize).findAll();
+
+const server = new ApolloServer({
+  typeDefs,
+  resolver,
+  context: { Motorcycle }
+});
 
 server.applyMiddleware({ app, path: "/graphql" });
 
 app.listen({ port: 8000 }, () => {
   console.log("Apollo server on http://localhost:8000/graphql");
 });
-
-const connection = mysql.createConnection({
-  host: keys.host,
-  user: keys.user,
-  password: keys.password,
-  database: keys.database,
-  port: "3306"
-});
-
-// connection.connect((err) => {
-//   if (err) {
-//     console.error('error connecting: ' + err.stack);
-//     return;
-//   }
 
 //   const createTable = "CREATE TABLE motorcycles (? VARCHAR(255), ? VARCHAR(255))"
 //   const createRow = "INSERT INTO motorcycles(make, model) VALUES(?, ?)"
