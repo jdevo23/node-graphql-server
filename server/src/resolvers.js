@@ -1,6 +1,6 @@
 const resolver = {
   Query: {
-    motorcycles: (parent, args, { db }, info) => db.motorcycle.findAll()
+    motorcycles: (obj, args, context, info) => context.findAll()
   }
 };
 

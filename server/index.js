@@ -21,12 +21,10 @@ const sequelize = new Sequelize({
   }
 });
 
-Motorcycle(sequelize, Sequelize).findAll();
-
 const server = new ApolloServer({
   typeDefs,
   resolver,
-  context: { Motorcycle }
+  context: Motorcycle(sequelize, Sequelize)
 });
 
 server.applyMiddleware({ app, path: "/graphql" });
